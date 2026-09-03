@@ -14,7 +14,7 @@ const required = [
   'index.html', 'app.js', 'styles.css', 'privacy.html', 'robots.txt',
   'registry.json', 'config/runtime.json', 'netlify.toml',
   '.github/workflows/health-scan.yml', 'scripts/scan-health.mjs',
-  'scripts/build-ai-package.mjs'
+  'scripts/build-cure-queue.mjs', 'scripts/build-ai-package.mjs'
 ];
 for (const file of required) assert(fs.existsSync(path.join(root, file)), `required file exists: ${file}`);
 
@@ -56,6 +56,8 @@ assert(netlify.includes('Cross-Origin-Opener-Policy = "same-origin-allow-popups"
 
 assert(workflow.includes('cron: "17 * * * *"'), 'hourly scheduled health scan is configured');
 assert(workflow.includes('"registry.json"'), 'registry changes trigger immediate health scan');
+assert(workflow.includes('node scripts/build-cure-queue.mjs'), 'fresh scan builds the cure queue before AI packaging');
+assert(workflow.includes('data/cure-candidates.json'), 'generated cure queue is committed with health data');
 assert(workflow.includes('[skip netlify]'), 'generated health commits explicitly skip Netlify deploys');
 assert(!workflow.toLowerCase().includes('netlify deploy'), 'health workflow contains no Netlify deploy command');
 
