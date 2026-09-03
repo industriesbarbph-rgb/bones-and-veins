@@ -1,0 +1,17 @@
+{
+  "name": "bones-and-veins",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BONES & VEINS — BarbPH SEO Health",
+  "type": "module",
+  "scripts": {
+    "check": "node --check app.js && node --check scripts/scan-health.mjs && node --check scripts/search-console.mjs && node --check scripts/google-oauth-connect.mjs && node --check scripts/build-ai-package.mjs",
+    "scan": "node scripts/scan-health.mjs",
+    "ai-package": "node scripts/build-ai-package.mjs",
+    "google:offline": "node scripts/search-console.mjs",
+    "google:authorize": "node scripts/google-oauth-connect.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
