@@ -1,0 +1,13 @@
+# Never commit secrets or secure source/deployment mappings
+.env
+.env.*
+!.env.example
+config/source-map.private.json
+config/google-credentials*.json
+*.pem
+*.key
+
+# Local/editor noise
+.DS_Store
+Thumbs.db
+node_modules/
