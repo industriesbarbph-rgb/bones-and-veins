@@ -44,6 +44,19 @@ Historical snapshot from the first scheduled scan:
 - [x] Registration gap is resolved.
 - [ ] SEO attention remains for that page: meta description missing and self-referencing canonical missing.
 
+## Second live findings — registry revision 2
+
+Current diagnosis snapshot after all 20 properties had live URLs:
+
+- 16 missing meta descriptions.
+- 17 missing self-referencing canonicals.
+- 1 canonical mismatch: Watch Tower still declares the old Netlify URL rather than `https://watchtower.barbph.com/`.
+- 0 registration gaps.
+- 0 confirmed outage faults.
+- Estate state: 2 healthy, 18 warning / SEO attention, 0 faults.
+
+No cures were applied. These are diagnosis results only.
+
 ## Operator / deployment gates still pending
 
 - [ ] Confirm the Search Console Google account is present under Google Auth Platform → Audience → Test users while the OAuth app remains in testing mode.
