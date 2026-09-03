@@ -1,0 +1,195 @@
+name: Bones & Veins Final Polish Package
+
+on:
+  push:
+    paths:
+      - '.github/workflows/final-polish-package.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  polish-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply final UI truthfulness fixes
+        shell: python
+        run: |
+          from pathlib import Path
+
+          app = Path('app.js')
+          text = app.read_text()
+
+          old = """  const dominant = s.fault ? 'FAULT' : s.warning ? 'WARNING' : (s.healthy || s.thriving) ? 'HEALTHY' : 'OBSERVING';
+          $('#overallHealth').textContent = dominant;
+          setVeins(dominant.toLowerCase());
+        }
+
+        function setVeins(state) {
+          document.querySelectorAll('.vein').forEach(v => {
+            v.className.baseVal = 'vein ' + (state === 'healthy' ? '' : state);
+          });
+        }
+        """
+          new = """  const dominant = s.fault ? 'FAULT' : s.warning ? 'WARNING' : (s.healthy || s.thriving) ? 'HEALTHY' : 'OBSERVING';
+          $('#overallHealth').textContent = dominant;
+          const systemHealthState = $('#systemHealthState');
+          if (systemHealthState) systemHealthState.textContent = dominant;
+          setVeins(dominant.toLowerCase());
+        }
+
+        function setVeins(state) {
+          const stage = document.querySelector('.organism-stage');
+          if (!stage) return;
+          stage.dataset.healthState = state;
+        }
+        """
+          if old not in text:
+              raise SystemExit('Expected renderHealth/setVeins block not found')
+          text = text.replace(old, new)
+
+          old_ledger = """function renderLedger() {
+          const e = ledger.entries || [];
+          $('#ledgerCount').textContent = `${e.length} ENTRIES`;
+          $('#ledger').innerHTML = e.length ? '' : `<div class=\"tiny\">Ledger is empty until the first scanner run.</div>`;
+          e.slice().reverse().slice(0, 100).forEach(x => {
+            const d = document.createElement('div');
+            d.className = 'ledger-row';
+            d.innerHTML = `<time>${esc(x.at || '')}</time><br>${esc(x.type || 'EVENT')} — ${esc(x.message || '')}`;
+            $('#ledger').appendChild(d);
+          });
+        }
+        """
+          new_ledger = """function renderLedger() {
+          const e = ledger.entries || [];
+          $('#ledgerCount').textContent = `${e.length} ENTRIES`;
+          $('#ledger').innerHTML = e.length ? '' : `<div class=\"tiny\">Ledger is empty until the first scanner run.</div>`;
+          e.slice().reverse().slice(0, 100).forEach(x => {
+            const d = document.createElement('div');
+            d.className = 'ledger-row';
+            d.innerHTML = `<time>${esc(x.at || '')}</time><br>${esc(x.type || 'EVENT')} — ${esc(x.message || '')}`;
+            $('#ledger').appendChild(d);
+          });
+
+          const feed = $('#activityFeed');
+          if (feed) {
+            const recent = e.slice().reverse().slice(0, 4);
+            feed.innerHTML = recent.length ? '' : '<p><time>--:--</time><i></i> Waiting for the first machine-ledger event.</p>';
+            recent.forEach(x => {
+              const p = document.createElement('p');
+              const stamp = x.at ? new Date(x.at) : null;
+              const time = stamp && !Number.isNaN(stamp.valueOf())
+                ? stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                : '--:--';
+              p.innerHTML = `<time>${esc(time)}</time><i></i> ${esc(x.message || x.type || 'Machine event')}`;
+              feed.appendChild(p);
+            });
+          }
+        }
+        """
+          if old_ledger not in text:
+              raise SystemExit('Expected renderLedger block not found')
+          text = text.replace(old_ledger, new_ledger)
+          text = text.replace("lines.push('BONES & VEINS — BarbPH SEO Health');", "lines.push('BONES & VEINS - BarbPH SEO Health');")
+          app.write_text(text)
+
+          index = Path('index.html')
+          html = index.read_text()
+          old_status = '<span>OVERALL STATE</span><strong>OBSERVING</strong><p>Scanner safety gate active.'
+          new_status = '<span>OVERALL STATE</span><strong id="systemHealthState">OBSERVING</strong><p>Scanner safety gate active.'
+          if old_status not in html:
+              raise SystemExit('Expected OVERALL STATE markup not found')
+          html = html.replace(old_status, new_status)
+          index.write_text(html)
+
+          css = Path('styles.css')
+          style = css.read_text()
+          marker = '/* organism health-state colors */'
+          if marker not in style:
+              style += """
+
+        /* organism health-state colors */
+        .organism-stage[data-health-state=\"warning\"] .vein-flow{stroke:var(--amber)}
+        .organism-stage[data-health-state=\"warning\"] .vein-capillary{stroke:#a99139}
+        .organism-stage[data-health-state=\"fault\"] .vein-flow{stroke:var(--red)}
+        .organism-stage[data-health-state=\"fault\"] .vein-capillary{stroke:#8e4545}
+        .organism-stage[data-health-state=\"observing\"] .vein-flow{stroke:#73b586}
+        .organism-stage[data-health-state=\"observing\"] .vein-capillary{stroke:#4b7c59}
+        """
+          css.write_text(style)
+
+      - name: Validate source
+        run: |
+          node --check app.js
+          node --check cure-queue.js
+          node scripts/preflight.mjs
+          grep -q 'id="systemHealthState"' index.html
+          grep -q "stage.dataset.healthState" app.js
+          grep -q "activityFeed" app.js
+
+      - name: Commit polished source
+        run: |
+          if git diff --quiet -- app.js index.html styles.css; then
+            echo 'No source changes required.'
+          else
+            git config user.name 'bones-veins-machine'
+            git config user.email 'actions@users.noreply.github.com'
+            git add app.js index.html styles.css
+            git commit -m 'Fix live dashboard state and activity wiring [skip netlify]'
+            git push
+          fi
+
+      - name: Build manual Netlify deploy folder
+        run: |
+          rm -rf deploy
+          mkdir -p deploy/config deploy/data
+          cp index.html privacy.html styles.css app.js cure-queue.js registry.json robots.txt deploy/
+          cp config/runtime.json deploy/config/runtime.json
+          cp data/health.json data/ledger.json data/reliability.json data/cure-candidates.json data/ai-reports.json data/google-search-console.json deploy/data/
+          cat > deploy/_headers <<'EOF'
+          /*
+            X-Robots-Tag: noindex, nofollow, noarchive
+            X-Content-Type-Options: nosniff
+            Referrer-Policy: no-referrer
+            Permissions-Policy: camera=(), microphone=(), geolocation=()
+            Cross-Origin-Opener-Policy: same-origin-allow-popups
+            Content-Security-Policy: default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' https://accounts.google.com; img-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com https://www.googleapis.com https://searchconsole.googleapis.com https://accounts.google.com; frame-src https://accounts.google.com; base-uri 'self'; form-action 'self'; object-src 'none'
+
+          /*.html
+            Cache-Control: no-cache
+
+          /registry.json
+            Cache-Control: no-store
+
+          /config/*
+            Cache-Control: no-store
+
+          /data/*
+            Cache-Control: no-store
+          EOF
+
+      - name: Validate deploy folder
+        run: |
+          test -f deploy/index.html
+          node --check deploy/app.js
+          node --check deploy/cure-queue.js
+          for f in deploy/registry.json deploy/config/runtime.json deploy/data/*.json; do jq empty "$f"; done
+          test "$(jq '.properties|length' deploy/registry.json)" = '20'
+          test "$(jq '[.tickets[]|select(.cureApproval==true)]|length' deploy/data/cure-candidates.json)" = '0'
+          test "$(jq '[.tickets[]|select(.publishApproval==true)]|length' deploy/data/cure-candidates.json)" = '0'
+          test "$(jq -r '.google.scope' deploy/config/runtime.json)" = 'https://www.googleapis.com/auth/webmasters.readonly'
+          grep -q 'raw.githubusercontent.com' deploy/_headers
+          grep -q 'searchconsole.googleapis.com' deploy/_headers
+          ! grep -R -E '-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|AIza[0-9A-Za-z_-]{30,}|gh[pousr]_[0-9A-Za-z]{30,}|sk-[0-9A-Za-z_-]{20,}' deploy
+          (cd deploy && zip -qr ../BONES-AND-VEINS-DRAG-DROP-FINAL.zip .)
+          unzip -t BONES-AND-VEINS-DRAG-DROP-FINAL.zip
+          unzip -l BONES-AND-VEINS-DRAG-DROP-FINAL.zip | grep -q ' index.html$'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BONES-AND-VEINS-DRAG-DROP-FINAL
+          path: BONES-AND-VEINS-DRAG-DROP-FINAL.zip
+          retention-days: 30
