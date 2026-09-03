@@ -19,6 +19,11 @@
       "at": "2026-09-03T11:58:00Z",
       "type": "GUARDRAIL",
       "message": "Dashboard marked noindex/nofollow; cure and publish approvals remain separate."
+    },
+    {
+      "at": "2026-09-03T13:28:29.865Z",
+      "type": "HEALTH_SCAN",
+      "message": "Scanned 20 properties: 0 thriving, 2 healthy, 0 observing, 18 warning, 0 fault."
     }
   ]
 }
