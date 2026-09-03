@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "healthDataUrl": "https://raw.githubusercontent.com/industriesbarbph-rgb/bones-and-veins/main/data/health.json",
+  "ledgerDataUrl": "https://raw.githubusercontent.com/industriesbarbph-rgb/bones-and-veins/main/data/ledger.json",
+  "google": {
+    "mode": "interactive_browser",
+    "clientId": "427344014512-bdr24eaohiifmlhs5pv1bqdj7sc380r2.apps.googleusercontent.com",
+    "scope": "https://www.googleapis.com/auth/webmasters.readonly"
+  }
+}
