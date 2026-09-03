@@ -1,0 +1,22 @@
+name: Bones & Veins Preflight
+on:
+  push:
+    paths-ignore:
+      - "data/**"
+  pull_request:
+    paths-ignore:
+      - "data/**"
+permissions:
+  contents: read
+concurrency:
+  group: bones-veins-preflight-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm run check
