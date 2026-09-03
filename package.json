@@ -5,8 +5,9 @@
   "description": "BONES & VEINS — BarbPH SEO Health",
   "type": "module",
   "scripts": {
-    "check": "node --check app.js && node --check scripts/scan-health.mjs && node --check scripts/build-ai-package.mjs && node --check scripts/preflight.mjs && node scripts/preflight.mjs",
+    "check": "node --check app.js && node --check scripts/scan-health.mjs && node --check scripts/build-cure-queue.mjs && node --check scripts/build-ai-package.mjs && node --check scripts/preflight.mjs && node scripts/preflight.mjs",
     "scan": "node scripts/scan-health.mjs",
+    "cures": "node scripts/build-cure-queue.mjs",
     "ai-package": "node scripts/build-ai-package.mjs",
     "preflight": "node scripts/preflight.mjs"
   },
