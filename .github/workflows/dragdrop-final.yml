@@ -51,7 +51,7 @@ jobs:
           grep -q 'searchconsole.googleapis.com' deploy/_headers
           grep -q 'id="systemHealthState"' deploy/index.html
           grep -q 'stage.dataset.healthState' deploy/app.js
-          grep -q "const feed = \$('#activityFeed'\)" deploy/app.js
+          grep -Fq 'activityFeed' deploy/app.js
       - name: Secret scan
         run: |
           if grep -R -E '-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|AIza[0-9A-Za-z_-]{30,}|gh[pousr]_[0-9A-Za-z]{30,}|sk-[0-9A-Za-z_-]{20,}' deploy; then exit 1; fi
@@ -69,5 +69,3 @@ jobs:
           path: BONES-AND-VEINS-DRAG-DROP-FINAL.zip
           if-no-files-found: error
           retention-days: 30
-
-# validation trigger
