@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "machine": {
+    "name": "BONES & VEINS",
+    "subtitle": "BarbPH SEO Health",
+    "publicUrl": "https://seohealth.barbph.com",
+    "curePolicy": "approval_required",
+    "publishPolicy": "separate_approval_required",
+    "searchConsoleProperty": "sc-domain:barbph.com"
+  },
+  "properties": [
+    {"id":"barbph","name":"BarbPH","kind":"parent_site","url":"https://barbph.com/","published":true,"category":"Parent","sourceMapping":"mapped"},
+    {"id":"ikl","name":"IKL","kind":"product","url":"https://ikl.barbph.com/","published":true,"category":"Learn","sourceMapping":"partial"},
+    {"id":"watchtower","name":"The Watch Tower","kind":"product","url":"https://watchtower.barbph.com/","published":true,"category":"Watch","sourceMapping":"pending"},
+    {"id":"will-wheel","name":"Will Wheel","kind":"product","url":"https://willwheelreadme.barbph.com/","published":true,"category":"Score","notes":"Admin sheet currently uses the readme URL as both story and try link.","sourceMapping":"pending"},
+    {"id":"jana","name":"Jana","kind":"product","url":"https://janafordemo.barbph.com/","published":true,"category":"Notepad","storyUrl":"https://just-a-notepad-appreadme.barbph.com/","buyUrl":"https://experiencejustanotepadapp.barbph.com/","sourceMapping":"pending"},
+    {"id":"the-bible","name":"The Bible","kind":"product","url":"https://ourbible.barbph.com/","published":true,"category":"Read","storyUrl":"https://ourbiblereadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"pendant-light-lounge","name":"The Pendant Light Lounge","kind":"product","url":"https://pendantlounge.barbph.com/","published":true,"category":"SEO ENGINE","storyUrl":"https://pendantlightsreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"dupli-tron-526","name":"Dupli Tron 526","kind":"product","url":"https://duplitron526.barbph.com/","published":true,"category":"FILE CONVERTER","storyUrl":"https://duplitron5236readme.barbph.com/","sourceMapping":"pending"},
+    {"id":"map-computer-science-it","name":"Map of Computer Science & IT","kind":"product","url":null,"published":true,"category":"Learn","registrationStatus":"incomplete","notes":"Published product exists in admin sheet, but no live/try URL is currently configured.","sourceMapping":"pending"},
+    {"id":"green-forrest-button","name":"Green Forrest Button","kind":"product","url":"https://greenforest.barbph.com/","published":true,"category":"SEO ENGINE","storyUrl":"https://ctaseriesreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"night-sky","name":"Night Sky","kind":"product","url":"https://nightsky.barbph.com/","published":true,"category":"Uncategorized","storyUrl":"https://ctaseriesreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"red-roses-button","name":"Red Roses Button","kind":"product","url":"https://redroses.barbph.com/","published":true,"category":"SEO ENGINE","storyUrl":"https://ctaseriesreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"joyful-prism","name":"Joyful Prism","kind":"product","url":"https://joyfulprism.barbph.com/","published":true,"category":"SEO ENGINE","storyUrl":"https://ctaseriesreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"the-vines","name":"The Vines","kind":"product","url":"https://vines.barbph.com/","published":true,"category":"SEO ENGINE","storyUrl":"https://ctaseriesreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"clouds-and-stars","name":"Clouds And Stars","kind":"product","url":"https://cloudsandstars.barbph.com/","published":true,"category":"SEO ENGINE","storyUrl":"https://ctaseriesreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"luna-rosa-sot","name":"The Luna Rosa SoT","kind":"product","url":"https://thelunarosa-sot.barbph.com/","published":true,"category":"DATA PULL","storyUrl":"https://thelunarosasotreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"orange-engine","name":"Orange Engine","kind":"product","url":"https://orangeengine.barbph.com/","published":true,"category":"PARSING MACHINE","storyUrl":"https://thelunarosasotreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"second-floor-marketplace","name":"The 2nd Floor Marketplace","kind":"product","url":"https://thesecondfloormarketplace.barbph.com/","published":true,"category":"SAAS","sourceMapping":"pending"},
+    {"id":"the-orb","name":"The ORB","kind":"product","url":"https://theorb.barbph.com/","published":true,"category":"INFORMATION INTAKE APP","storyUrl":"https://theorbreadme.barbph.com/","sourceMapping":"pending"},
+    {"id":"no-human-conversation","name":"No Human Conversation","kind":"product","url":"https://nohumanconversation.barbph.com/","published":true,"category":"WELLNESS APP","sourceMapping":"pending"}
+  ]
+}
