@@ -1,0 +1,97 @@
+name: Bones & Veins Drag Drop Package
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'cure-queue.js'
+      - 'styles.css'
+      - 'privacy.html'
+      - 'robots.txt'
+      - 'registry.json'
+      - 'config/runtime.json'
+      - 'data/**'
+      - 'scripts/preflight.mjs'
+      - '.github/workflows/package-dragdrop.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run structural preflight
+        run: node scripts/preflight.mjs
+
+      - name: Build static drag-and-drop folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf deploy BONES-AND-VEINS-DRAG-DROP.zip
+          mkdir -p deploy/config deploy/data
+
+          cp index.html app.js cure-queue.js styles.css privacy.html robots.txt registry.json deploy/
+          cp config/runtime.json deploy/config/runtime.json
+          cp data/health.json data/ledger.json data/reliability.json data/cure-candidates.json data/ai-reports.json data/google-search-console.json deploy/data/
+
+          cat > deploy/_headers <<'EOF'
+          /*
+            X-Robots-Tag: noindex, nofollow, noarchive
+            X-Content-Type-Options: nosniff
+            Referrer-Policy: no-referrer
+            Permissions-Policy: camera=(), microphone=(), geolocation=()
+            Cross-Origin-Opener-Policy: same-origin-allow-popups
+            Content-Security-Policy: default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' https://accounts.google.com; img-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com https://www.googleapis.com https://searchconsole.googleapis.com https://accounts.google.com; frame-src https://accounts.google.com; base-uri 'self'; form-action 'self'; object-src 'none'
+
+          /*.html
+            Cache-Control: no-cache
+
+          /registry.json
+            Cache-Control: no-store
+
+          /config/*
+            Cache-Control: no-store
+
+          /data/*
+            Cache-Control: no-store
+          EOF
+
+          node --check deploy/app.js
+          node --check deploy/cure-queue.js
+          node -e "for (const p of ['deploy/registry.json','deploy/config/runtime.json','deploy/data/health.json','deploy/data/ledger.json','deploy/data/reliability.json','deploy/data/cure-candidates.json','deploy/data/ai-reports.json','deploy/data/google-search-console.json']) JSON.parse(require('fs').readFileSync(p,'utf8'));"
+
+          grep -q 'cure-queue.js' deploy/index.html
+          grep -q 'app.js' deploy/index.html
+          grep -q 'styles.css' deploy/index.html
+          grep -q 'webmasters.readonly' deploy/config/runtime.json
+          grep -q 'cureQueueDataUrl' deploy/config/runtime.json
+          grep -q 'CURE APPROVAL:.*LOCKED' deploy/cure-queue.js
+          grep -q 'PUBLISH APPROVAL:.*LOCKED' deploy/cure-queue.js
+
+          if grep -R -E '-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|gh[pousr]_[0-9A-Za-z]{30,}|sk-[0-9A-Za-z_-]{20,}' deploy; then
+            echo 'Secret-like material detected in deployment folder' >&2
+            exit 1
+          fi
+
+          (cd deploy && zip -r ../BONES-AND-VEINS-DRAG-DROP.zip .)
+          test "$(unzip -Z1 BONES-AND-VEINS-DRAG-DROP.zip | head -1)" != 'deploy/'
+          unzip -Z1 BONES-AND-VEINS-DRAG-DROP.zip | grep -qx 'index.html'
+          unzip -Z1 BONES-AND-VEINS-DRAG-DROP.zip | grep -qx '_headers'
+
+      - name: Upload drag-and-drop ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: BONES-AND-VEINS-DRAG-DROP
+          path: BONES-AND-VEINS-DRAG-DROP.zip
+          if-no-files-found: error
+          retention-days: 30
