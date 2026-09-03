@@ -9,6 +9,7 @@ This document records the deployment gate for `https://seohealth.barbph.com`.
 - [x] All 20 monitored properties now have registered live URLs.
 - [x] Scanner reliability gate implemented: one transport miss does not become FAULT; repeated scheduled failures escalate.
 - [x] First scheduled GitHub Actions health scan completed successfully.
+- [x] Registry changes trigger an immediate health scan in addition to the hourly schedule.
 - [x] First real scan confirmed BarbPH and IKL healthy and produced SEO findings without classifying any property as an outage fault.
 - [x] Hourly workflow writes health/reliability/ledger/AI diagnostic data and commits with `[skip netlify]`.
 - [x] Google Search Console API enabled by the operator.
@@ -38,7 +39,10 @@ Historical snapshot from the first scheduled scan:
 
 - [x] Map of Computer Science & IT live URL recovered from the BarbPH internal master archive and registered as `https://comscie-it-map.barbph.com/`.
 - [x] The original first-scan finding remains recorded above as historical truth rather than being erased.
-- [ ] Next scheduled scan will establish the map's live SEO health state using the newly registered URL.
+- [x] Immediate registry-change scan verified the map at HTTP 200 on the registered URL.
+- [x] The map's title is present: `Map of Computer Science & IT`.
+- [x] Registration gap is resolved.
+- [ ] SEO attention remains for that page: meta description missing and self-referencing canonical missing.
 
 ## Operator / deployment gates still pending
 
