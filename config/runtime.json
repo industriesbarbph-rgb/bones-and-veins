@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "healthDataUrl": "https://raw.githubusercontent.com/industriesbarbph-rgb/bones-and-veins/main/data/health.json",
   "ledgerDataUrl": "https://raw.githubusercontent.com/industriesbarbph-rgb/bones-and-veins/main/data/ledger.json",
+  "cureQueueDataUrl": "https://raw.githubusercontent.com/industriesbarbph-rgb/bones-and-veins/main/data/cure-candidates.json",
   "google": {
     "mode": "interactive_browser",
     "clientId": "427344014512-bdr24eaohiifmlhs5pv1bqdj7sc380r2.apps.googleusercontent.com",
