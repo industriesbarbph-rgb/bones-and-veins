@@ -64,12 +64,19 @@ function setVeins(state) {
   return text.replace("lines.push('BONES & VEINS — BarbPH SEO Health');", "lines.push('BONES & VEINS - BarbPH SEO Health');");
 });
 
-update('index.html', html => html.replace(
-  '<span>OVERALL STATE</span><strong>OBSERVING</strong><p>Scanner safety gate active.',
-  '<span>OVERALL STATE</span><strong id="systemHealthState">OBSERVING</strong><p>Scanner safety gate active.'
-));
+update('index.html', html => {
+  html = html.replace(
+    '<span>OVERALL STATE</span><strong>OBSERVING</strong><p>Scanner safety gate active.',
+    '<span>OVERALL STATE</span><strong id="systemHealthState">OBSERVING</strong><p>Scanner safety gate active.'
+  );
+  return html.replace(
+    '        <div class="stage-corner tl"></div><div class="stage-corner tr"></div><div class="stage-corner bl"></div><div class="stage-corner br"></div>\n',
+    ''
+  );
+});
 
 update('styles.css', css => {
+  css = css.replace(/\.stage-corner\{[^}]*\}\.stage-corner\.tl\{[^}]*\}\.stage-corner\.tr\{[^}]*\}\.stage-corner\.bl\{[^}]*\}\.stage-corner\.br\{[^}]*\}/, '');
   if (css.includes('/* organism health-state colors */')) return css;
   return css + `
 
@@ -89,6 +96,8 @@ const styles = fs.readFileSync('styles.css', 'utf8');
 if (!app.includes("stage.dataset.healthState = state")) throw new Error('Vein state wiring missing after polish.');
 if (!app.includes("const feed = $('#activityFeed');")) throw new Error('Live activity wiring missing after polish.');
 if (!index.includes('id="systemHealthState"')) throw new Error('Overall state target missing after polish.');
+if (index.includes('stage-corner')) throw new Error('Decorative organism corner frames still present after polish.');
+if (styles.includes('.stage-corner')) throw new Error('Decorative organism corner frame CSS still present after polish.');
 if (!styles.includes('/* organism health-state colors */')) throw new Error('Organism state styles missing after polish.');
 
 console.log('Final UI polish applied and verified.');
