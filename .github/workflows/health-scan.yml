@@ -2,6 +2,10 @@ name: Bones & Veins Health Scan
 on:
   schedule:
     - cron: "17 * * * *"
+  push:
+    paths:
+      - "registry.json"
+      - "scripts/scan-health.mjs"
   workflow_dispatch:
 permissions:
   contents: write
