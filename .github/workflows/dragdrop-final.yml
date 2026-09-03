@@ -1,0 +1,71 @@
+name: BONES & VEINS Final Drag Drop
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/dragdrop-final.yml'
+      - 'scripts/final-polish.mjs'
+      - '_headers'
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Apply temporary deployment polish
+        run: node scripts/final-polish.mjs
+      - name: Validate source
+        run: |
+          node --check app.js
+          node --check cure-queue.js
+          node scripts/preflight.mjs
+          grep -q 'id="systemHealthState"' index.html
+          grep -q 'stage.dataset.healthState' app.js
+          grep -q 'organism health-state colors' styles.css
+      - name: Assemble deploy folder
+        run: |
+          rm -rf deploy BONES-AND-VEINS-DRAG-DROP-FINAL.zip
+          mkdir -p deploy/config deploy/data
+          cp index.html app.js cure-queue.js styles.css privacy.html robots.txt registry.json _headers deploy/
+          cp config/runtime.json deploy/config/runtime.json
+          cp data/health.json data/ledger.json data/reliability.json data/cure-candidates.json data/ai-reports.json data/google-search-console.json deploy/data/
+      - name: Validate deployment contents
+        run: |
+          node --check deploy/app.js
+          node --check deploy/cure-queue.js
+          node -e "for (const p of ['deploy/registry.json','deploy/config/runtime.json','deploy/data/health.json','deploy/data/ledger.json','deploy/data/reliability.json','deploy/data/cure-candidates.json','deploy/data/ai-reports.json','deploy/data/google-search-console.json']) JSON.parse(require('fs').readFileSync(p,'utf8'));"
+          test "$(jq '.properties|length' deploy/registry.json)" = '20'
+          test "$(jq '[.tickets[]|select(.cureApproval==true)]|length' deploy/data/cure-candidates.json)" = '0'
+          test "$(jq '[.tickets[]|select(.publishApproval==true)]|length' deploy/data/cure-candidates.json)" = '0'
+          test "$(jq -r '.google.scope' deploy/config/runtime.json)" = 'https://www.googleapis.com/auth/webmasters.readonly'
+          grep -q 'raw.githubusercontent.com' deploy/_headers
+          grep -q 'searchconsole.googleapis.com' deploy/_headers
+          grep -q 'id="systemHealthState"' deploy/index.html
+          grep -q 'stage.dataset.healthState' deploy/app.js
+          grep -q "const feed = \$('#activityFeed'\)" deploy/app.js
+      - name: Secret scan
+        run: |
+          if grep -R -E '-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|AIza[0-9A-Za-z_-]{30,}|gh[pousr]_[0-9A-Za-z]{30,}|sk-[0-9A-Za-z_-]{20,}' deploy; then exit 1; fi
+      - name: Create ZIP
+        run: |
+          cd deploy
+          zip -qr ../BONES-AND-VEINS-DRAG-DROP-FINAL.zip .
+          cd ..
+          unzip -t BONES-AND-VEINS-DRAG-DROP-FINAL.zip
+          unzip -Z1 BONES-AND-VEINS-DRAG-DROP-FINAL.zip | grep -qx 'index.html'
+          unzip -Z1 BONES-AND-VEINS-DRAG-DROP-FINAL.zip | grep -qx '_headers'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BONES-AND-VEINS-DRAG-DROP-FINAL
+          path: BONES-AND-VEINS-DRAG-DROP-FINAL.zip
+          if-no-files-found: error
+          retention-days: 30
