@@ -11,7 +11,7 @@ const fail = msg => { failures.push(msg); console.error(`FAIL  ${msg}`); };
 const assert = (condition, msg) => condition ? pass(msg) : fail(msg);
 
 const required = [
-  'index.html', 'app.js', 'styles.css', 'privacy.html', 'robots.txt',
+  'index.html', 'app.js', 'cure-queue.js', 'styles.css', 'privacy.html', 'robots.txt',
   'registry.json', 'config/runtime.json', 'netlify.toml',
   '.github/workflows/health-scan.yml', 'scripts/scan-health.mjs',
   'scripts/build-cure-queue.mjs', 'scripts/build-ai-package.mjs'
@@ -24,6 +24,7 @@ const index = read('index.html');
 const netlify = read('netlify.toml');
 const workflow = read('.github/workflows/health-scan.yml');
 const gitignore = read('.gitignore');
+const cureQueueScript = read('cure-queue.js');
 
 const props = registry.properties || [];
 assert(props.length === 20, `registry contains exactly 20 monitored properties (found ${props.length})`);
@@ -41,17 +42,21 @@ assert(runtime.google?.scope === 'https://www.googleapis.com/auth/webmasters.rea
 assert(runtime.google?.mode === 'interactive_browser', 'Google authorization mode is interactive browser');
 assert(!JSON.stringify(runtime).toLowerCase().includes('clientsecret'), 'runtime config contains no Google Client Secret field');
 assert(!JSON.stringify(runtime).toLowerCase().includes('refresh_token'), 'runtime config contains no refresh token');
+assert(/^https:\/\/raw\.githubusercontent\.com\/industriesbarbph-rgb\/bones-and-veins\/main\/data\/cure-candidates\.json$/.test(runtime.cureQueueDataUrl || ''), 'live Cure Queue stream points to the public-safe GitHub data file');
 
 assert(/noindex,nofollow,noarchive/i.test(index.replace(/\s+/g, '')), 'dashboard HTML declares noindex/nofollow/noarchive');
 assert(index.includes('GOOGLE SEARCH CONSOLE'), 'Google Search Console bay exists');
 assert(index.includes('BONES &amp; VEINS SYSTEM'), 'BONES & VEINS system bay exists');
 assert(index.includes('FINDINGS / DIAGNOSIS / CURES'), 'findings/diagnosis/cures bay exists');
 assert(index.includes('WARNING / SEO ATTENTION'), 'warning language distinguishes SEO attention from outage fault');
+assert(index.includes('<script src="cure-queue.js"></script>'), 'dashboard loads the live Cure Queue client');
+assert(cureQueueScript.includes('cure-candidates.json'), 'Cure Queue client reads generated cure candidates');
+assert(cureQueueScript.includes('CURE LOCKED') && cureQueueScript.includes('PUBLISH LOCKED'), 'Cure Queue UI displays both approval locks');
 
 assert(netlify.includes('X-Robots-Tag = "noindex, nofollow, noarchive"'), 'Netlify sends crawler-blocking header');
 assert(netlify.includes('Content-Security-Policy'), 'Content Security Policy is configured');
 assert(netlify.includes('https://accounts.google.com'), 'CSP allows Google Identity Services');
-assert(netlify.includes('https://raw.githubusercontent.com'), 'CSP allows live GitHub health stream');
+assert(netlify.includes('https://raw.githubusercontent.com'), 'CSP allows live GitHub health and cure streams');
 assert(netlify.includes('Cross-Origin-Opener-Policy = "same-origin-allow-popups"'), 'OAuth popup-compatible COOP header is configured');
 
 assert(workflow.includes('cron: "17 * * * *"'), 'hourly scheduled health scan is configured');
@@ -64,7 +69,7 @@ assert(!workflow.toLowerCase().includes('netlify deploy'), 'health workflow cont
 assert(gitignore.includes('.env'), '.env files are ignored');
 assert(gitignore.toLowerCase().includes('source-map.private'), 'private source mapping is ignored');
 
-const publicText = [index, read('app.js'), read('styles.css'), read('registry.json'), read('config/runtime.json'), netlify].join('\n');
+const publicText = [index, read('app.js'), cureQueueScript, read('styles.css'), read('registry.json'), read('config/runtime.json'), netlify].join('\n');
 const forbiddenPatterns = [
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
   /AIza[0-9A-Za-z_-]{30,}/,
