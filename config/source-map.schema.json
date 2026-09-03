@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BONES & VEINS secure source map",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "products"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "products": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "githubRepository": {"type": ["string", "null"]},
+          "githubBranch": {"type": ["string", "null"]},
+          "netlifySiteId": {"type": ["string", "null"]},
+          "netlifyProjectName": {"type": ["string", "null"]},
+          "notes": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}
