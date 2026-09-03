@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "at": "2026-09-03T12:21:52.318167+00:00",
+      "type": "VALIDATION",
+      "message": "Discarded workspace-wide FETCH_FAILED results; products returned to OBSERVING until reliable live-network validation confirms site-level faults."
+    },
+    {
+      "at": "2026-09-03T12:18:00Z",
+      "type": "GOOGLE_BAY",
+      "message": "Prepared aggregate Search Console metrics, sitemap status and URL Inspection indexed-version fields."
+    },
+    {
+      "at": "2026-09-03T12:10:00Z",
+      "type": "SECURITY",
+      "message": "Source repo and deployment identifiers reserved for secure cure gateway; no browser credentials stored."
+    },
+    {
+      "at": "2026-09-03T11:58:00Z",
+      "type": "GUARDRAIL",
+      "message": "Dashboard marked noindex/nofollow; cure and publish approvals remain separate."
+    }
+  ]
+}
