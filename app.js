@@ -98,13 +98,15 @@ POLICY: APPROVAL REQUIRED</div><div class="controls section"><button class="btn 
 
   const dominant = s.fault ? 'FAULT' : s.warning ? 'WARNING' : (s.healthy || s.thriving) ? 'HEALTHY' : 'OBSERVING';
   $('#overallHealth').textContent = dominant;
+  const systemHealthState = $('#systemHealthState');
+  if (systemHealthState) systemHealthState.textContent = dominant;
   setVeins(dominant.toLowerCase());
 }
 
 function setVeins(state) {
-  document.querySelectorAll('.vein').forEach(v => {
-    v.className.baseVal = 'vein ' + (state === 'healthy' ? '' : state);
-  });
+  const stage = document.querySelector('.organism-stage');
+  if (!stage) return;
+  stage.dataset.healthState = state;
 }
 
 function renderGoogle() {
@@ -135,6 +137,21 @@ function renderLedger() {
     d.innerHTML = `<time>${esc(x.at || '')}</time><br>${esc(x.type || 'EVENT')} — ${esc(x.message || '')}`;
     $('#ledger').appendChild(d);
   });
+
+  const feed = $('#activityFeed');
+  if (feed) {
+    const recent = e.slice().reverse().slice(0, 4);
+    feed.innerHTML = recent.length ? '' : '<p><time>--:--</time><i></i> Waiting for the first machine-ledger event.</p>';
+    recent.forEach(x => {
+      const p = document.createElement('p');
+      const stamp = x.at ? new Date(x.at) : null;
+      const time = stamp && !Number.isNaN(stamp.valueOf())
+        ? stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        : '--:--';
+      p.innerHTML = `<time>${esc(time)}</time><i></i> ${esc(x.message || x.type || 'Machine event')}`;
+      feed.appendChild(p);
+    });
+  }
 }
 
 function renderAi() {
@@ -196,7 +213,7 @@ function download(text, name, type = 'text/plain') {
 
 function reportText() {
   const lines = [];
-  lines.push('BONES & VEINS — BarbPH SEO Health');
+  lines.push('BONES & VEINS - BarbPH SEO Health');
   lines.push('Generated: ' + new Date().toISOString());
   lines.push('');
   lines.push('SOURCE: BONES & VEINS');
