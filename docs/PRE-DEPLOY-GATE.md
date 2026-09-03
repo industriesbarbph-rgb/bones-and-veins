@@ -6,6 +6,7 @@ This document records the deployment gate for `https://seohealth.barbph.com`.
 
 - [x] BONES & VEINS control-room UI built and visually approved.
 - [x] Day-1 registry contains BarbPH + 19 published products (20 monitored properties).
+- [x] All 20 monitored properties now have registered live URLs.
 - [x] Scanner reliability gate implemented: one transport miss does not become FAULT; repeated scheduled failures escalate.
 - [x] First scheduled GitHub Actions health scan completed successfully.
 - [x] First real scan confirmed BarbPH and IKL healthy and produced SEO findings without classifying any property as an outage fault.
@@ -23,13 +24,21 @@ This document records the deployment gate for `https://seohealth.barbph.com`.
 
 ## First live findings (diagnosis only — no cures applied)
 
+Historical snapshot from the first scheduled scan:
+
 - 15 missing meta descriptions.
 - 16 missing self-referencing canonicals.
 - 1 canonical mismatch: Watch Tower declares the old Netlify URL rather than the registered `watchtower.barbph.com` URL.
-- 1 registration gap: Map of Computer Science & IT has no live URL configured.
+- 1 registration gap: Map of Computer Science & IT had no live URL configured at scan time.
 - 0 missing titles.
 - 0 unexpected `noindex` findings.
 - 0 confirmed outage faults.
+
+## Resolution after first scan
+
+- [x] Map of Computer Science & IT live URL recovered from the BarbPH internal master archive and registered as `https://comscie-it-map.barbph.com/`.
+- [x] The original first-scan finding remains recorded above as historical truth rather than being erased.
+- [ ] Next scheduled scan will establish the map's live SEO health state using the newly registered URL.
 
 ## Operator / deployment gates still pending
 
