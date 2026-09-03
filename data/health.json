@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-09-03T12:21:52.317819+00:00",
+  "source": "BONES & VEINS",
+  "status": "validation_pending",
+  "summary": {"total":20,"healthy":0,"thriving":0,"observing":19,"warning":1,"fault":0},
+  "properties": [
+    {"id":"barbph","name":"BarbPH","url":"https://barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"ikl","name":"IKL","url":"https://ikl.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"watchtower","name":"The Watch Tower","url":"https://watchtower.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"will-wheel","name":"Will Wheel","url":"https://willwheelreadme.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"jana","name":"Jana","url":"https://janafordemo.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"the-bible","name":"The Bible","url":"https://ourbible.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"pendant-light-lounge","name":"The Pendant Light Lounge","url":"https://pendantlounge.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"dupli-tron-526","name":"Dupli Tron 526","url":"https://duplitron526.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"map-computer-science-it","name":"Map of Computer Science & IT","url":null,"state":"warning","label":"REGISTRATION INCOMPLETE","checks":{},"findings":[{"code":"LIVE_URL_MISSING","severity":"warning","diagnosis":"This published product is registered in the admin sheet but has no live URL configured for monitoring.","cure":"Add the intended live product URL to the product registry after confirming the correct destination."}]},
+    {"id":"green-forrest-button","name":"Green Forrest Button","url":"https://greenforest.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"night-sky","name":"Night Sky","url":"https://nightsky.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"red-roses-button","name":"Red Roses Button","url":"https://redroses.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"joyful-prism","name":"Joyful Prism","url":"https://joyfulprism.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"the-vines","name":"The Vines","url":"https://vines.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"clouds-and-stars","name":"Clouds And Stars","url":"https://cloudsandstars.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"luna-rosa-sot","name":"The Luna Rosa SoT","url":"https://thelunarosa-sot.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"orange-engine","name":"Orange Engine","url":"https://orangeengine.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"second-floor-marketplace","name":"The 2nd Floor Marketplace","url":"https://thesecondfloormarketplace.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"the-orb","name":"The ORB","url":"https://theorb.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]},
+    {"id":"no-human-conversation","name":"No Human Conversation","url":"https://nohumanconversation.barbph.com/","state":"observing","label":"OBSERVING","checks":{},"findings":[]}
+  ],
+  "note": "Previous workspace-wide FETCH_FAILED results were discarded because the scanner runtime could not reliably validate outbound network access."
+}
