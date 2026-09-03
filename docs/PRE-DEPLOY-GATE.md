@@ -12,6 +12,8 @@ This document records the deployment gate for `https://seohealth.barbph.com`.
 - [x] Registry changes trigger an immediate health scan in addition to the hourly schedule.
 - [x] First real scan confirmed BarbPH and IKL healthy and produced SEO findings without classifying any property as an outage fault.
 - [x] Hourly workflow writes health/reliability/ledger/AI diagnostic data and commits with `[skip netlify]`.
+- [x] Permanent deployment preflight added and included in `npm run check`.
+- [x] First GitHub Preflight CI run completed successfully.
 - [x] Google Search Console API enabled by the operator.
 - [x] Google OAuth public Client ID configured in `config/runtime.json`.
 - [x] Google scope is read-only: `https://www.googleapis.com/auth/webmasters.readonly`.
