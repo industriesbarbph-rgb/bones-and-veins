@@ -41,7 +41,7 @@ jobs:
           NTFY_SERVER: https://ntfy.sh
           NTFY_CONSOLE_URL: https://seohealth.barbph.com/
           PREV_HEALTH_PATH: /tmp/health-before.json
-          NTFY_TEST: ${{ inputs.send_test_alert }}
+          NTFY_TEST: ${{ inputs.send_test_alert || (github.event_name == 'push' && contains(github.event.head_commit.message, '[ntfy-test]')) }}
         run: node scripts/notify-ntfy.mjs
       - name: Commit reports without requesting a site deploy
         run: |
