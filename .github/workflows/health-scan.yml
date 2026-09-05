@@ -11,6 +11,12 @@ on:
       - "scripts/notify-ntfy.mjs"
       - ".github/workflows/health-scan.yml"
   workflow_dispatch:
+    inputs:
+      send_test_alert:
+        description: "Send a one-time ntfy connection test"
+        required: false
+        default: false
+        type: boolean
 permissions:
   contents: write
 concurrency:
@@ -35,6 +41,7 @@ jobs:
           NTFY_SERVER: https://ntfy.sh
           NTFY_CONSOLE_URL: https://seohealth.barbph.com/
           PREV_HEALTH_PATH: /tmp/health-before.json
+          NTFY_TEST: ${{ inputs.send_test_alert }}
         run: node scripts/notify-ntfy.mjs
       - name: Commit reports without requesting a site deploy
         run: |
