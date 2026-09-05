@@ -4,6 +4,7 @@ const topic = (process.env.NTFY_TOPIC || '').trim();
 const server = (process.env.NTFY_SERVER || 'https://ntfy.sh').replace(/\/$/, '');
 const consoleUrl = process.env.NTFY_CONSOLE_URL || 'https://seohealth.barbph.com/';
 const previousPath = process.env.PREV_HEALTH_PATH || '/tmp/health-before.json';
+const testMode = ['1', 'true', 'yes'].includes(String(process.env.NTFY_TEST || '').toLowerCase());
 
 if (!topic) {
   console.log('NTFY_TOPIC is not configured; skipping ntfy alerts.');
@@ -91,6 +92,15 @@ async function publish({ title, message, priority, tags }) {
 
 const stamp = current.generatedAt ? new Date(current.generatedAt).toLocaleString('en-PH', { timeZone: 'Asia/Manila' }) : 'latest scan';
 
+if (testMode) {
+  await publish({
+    title: 'BARBPH SEO ALERT ENGINE ONLINE',
+    message: `ntfy is connected to the Electrocardiogram Console. Test sent: ${new Date().toLocaleString('en-PH', { timeZone: 'Asia/Manila' })}`,
+    priority: 4,
+    tags: ['white_check_mark', 'test_tube']
+  });
+}
+
 if (faults.length) {
   await publish({
     title: 'BARBPH SEO FAULT',
@@ -118,8 +128,8 @@ if (recoveries.length) {
   });
 }
 
-if (!faults.length && !warnings.length && !recoveries.length) {
+if (!testMode && !faults.length && !warnings.length && !recoveries.length) {
   console.log('No alert-worthy SEO state changes; ntfy remains quiet.');
 } else {
-  console.log(`ntfy alerts sent: ${faults.length} fault, ${warnings.length} warning, ${recoveries.length} recovery change(s).`);
+  console.log(`ntfy completed: test=${testMode}, ${faults.length} fault, ${warnings.length} warning, ${recoveries.length} recovery change(s).`);
 }
