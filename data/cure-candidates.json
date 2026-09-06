@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T23:23:55.812Z",
-  "basedOnHealthGeneratedAt": "2026-09-05T23:23:50.837Z",
+  "generatedAt": "2026-09-06T00:38:47.906Z",
+  "basedOnHealthGeneratedAt": "2026-09-06T00:38:43.642Z",
   "policy": {
     "cure": "APPROVAL REQUIRED",
     "publish": "SEPARATE APPROVAL REQUIRED",
@@ -9,33 +9,14 @@
     "automaticProductionDeploys": false
   },
   "summary": {
-    "totalCandidates": 34,
-    "pendingApproval": 34,
+    "totalCandidates": 33,
+    "pendingApproval": 33,
     "contentReviewRequired": 16,
-    "authorityConfirmationRequired": 1,
-    "sourceMappingPending": 34,
+    "authorityConfirmationRequired": 0,
+    "sourceMappingPending": 33,
     "staleFindingsSkipped": 0
   },
   "tickets": [
-    {
-      "ticketId": "watchtower:CANONICAL_MISMATCH",
-      "propertyId": "watchtower",
-      "propertyName": "The Watch Tower",
-      "registeredUrl": "https://watchtower.barbph.com/",
-      "findingCode": "CANONICAL_MISMATCH",
-      "severity": "warning",
-      "diagnosis": "Declared canonical https://thriving-pie-e168bd.netlify.app/ differs from registered URL https://watchtower.barbph.com/.",
-      "evidence": {},
-      "sourceMapping": "pending",
-      "status": "PENDING APPROVAL",
-      "cureApproval": false,
-      "publishApproval": false,
-      "action": "Confirm the registered URL is authoritative, then replace the declared canonical if approved.",
-      "proposedValue": "https://watchtower.barbph.com/",
-      "requiresContentReview": false,
-      "requiresAuthorityConfirmation": true,
-      "publishRequired": true
-    },
     {
       "ticketId": "will-wheel:META_DESCRIPTION_MISSING",
       "propertyId": "will-wheel",
