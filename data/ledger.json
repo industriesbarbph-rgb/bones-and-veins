@@ -1094,6 +1094,11 @@
       "at": "2026-09-12T16:26:43.881Z",
       "type": "HEALTH_SCAN",
       "message": "Scanned 20 properties: 2 thriving, 1 healthy, 0 observing, 16 warning, 1 fault."
+    },
+    {
+      "at": "2026-09-12T17:24:53.976Z",
+      "type": "HEALTH_SCAN",
+      "message": "Scanned 20 properties: 1 thriving, 2 healthy, 0 observing, 16 warning, 1 fault."
     }
   ]
 }
