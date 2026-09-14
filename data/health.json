@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-14T03:29:03.628Z",
+  "generatedAt": "2026-09-14T04:29:01.817Z",
   "source": "BONES & VEINS",
   "status": "complete",
   "reliabilityPolicy": "single network misses never become FAULT; repeated failures are escalated across scheduled runs",
   "summary": {
     "total": 20,
-    "healthy": 2,
-    "thriving": 1,
+    "healthy": 1,
+    "thriving": 2,
     "observing": 0,
     "warning": 17,
     "fault": 0
@@ -16,8 +16,8 @@
       "id": "barbph",
       "name": "BarbPH",
       "url": "https://barbph.com/",
-      "state": "healthy",
-      "label": "HEALTHY",
+      "state": "thriving",
+      "label": "THRIVING",
       "checks": {
         "networkAttempts": [
           {
@@ -25,14 +25,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://barbph.com/",
-            "durationMs": 690
+            "durationMs": 831
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://barbph.com/",
-        "responseTimeMs": 690,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 831,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "BarbPH | Digital Assets, Coaching & Multidisciplinary Arts",
         "description": "Explore BarbPH digital assets, coaching programs, multidisciplinary arts, interactive builds, publications, live systems, and independent digital projects.",
@@ -49,8 +49,8 @@
       "id": "ikl",
       "name": "IKL",
       "url": "https://ikl.barbph.com/",
-      "state": "healthy",
-      "label": "HEALTHY",
+      "state": "thriving",
+      "label": "THRIVING",
       "checks": {
         "networkAttempts": [
           {
@@ -58,14 +58,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://ikl.barbph.com/",
-            "durationMs": 648
+            "durationMs": 727
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://ikl.barbph.com/",
-        "responseTimeMs": 648,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 727,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Coach Doll Edition — Interactive Knowledge Library",
         "description": "A growing collection of visual learning experiences built to help you explore knowledge by touching, tracing, comparing, dissecting, rebuilding, and testing what you learn.",
@@ -82,8 +82,8 @@
       "id": "watchtower",
       "name": "The Watch Tower",
       "url": "https://watchtower.barbph.com/",
-      "state": "thriving",
-      "label": "THRIVING",
+      "state": "healthy",
+      "label": "HEALTHY",
       "checks": {
         "networkAttempts": [
           {
@@ -91,14 +91,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://watchtower.barbph.com/",
-            "durationMs": 922
+            "durationMs": 1157
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://watchtower.barbph.com/",
-        "responseTimeMs": 922,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 1157,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Live Cameras & Webcams Around the World | Global Sky",
         "description": "Watch real-time live cameras and webcams around the world with Global Sky, rotating through city, street, beach, scenic, wildlife and weather views every two minutes.",
@@ -130,8 +130,8 @@
         "httpStatus": 200,
         "finalUrl": "https://willwheelreadme.barbph.com/",
         "responseTimeMs": 760,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "WILL WHEEL KPI Dashboard — Origin & Philosophy",
         "description": null,
@@ -172,14 +172,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://janafordemo.barbph.com/",
-            "durationMs": 574
+            "durationMs": 167
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://janafordemo.barbph.com/",
-        "responseTimeMs": 574,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 167,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Just A Notepad © 2026",
         "description": "Just A Notepad — Your private space. No cloud. No tracking. Yours forever.",
@@ -213,14 +213,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://ourbible.barbph.com/",
-            "durationMs": 686
+            "durationMs": 691
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://ourbible.barbph.com/",
-        "responseTimeMs": 686,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 691,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "The Executive Study Bible — Codex Edition V46",
         "description": null,
@@ -261,14 +261,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://pendantlounge.barbph.com/",
-            "durationMs": 185
+            "durationMs": 706
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://pendantlounge.barbph.com/",
-        "responseTimeMs": 185,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 706,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Barb's Luxury Pendant Collection",
         "description": null,
@@ -309,14 +309,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://duplitron526.barbph.com/",
-            "durationMs": 684
+            "durationMs": 751
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://duplitron526.barbph.com/",
-        "responseTimeMs": 684,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 751,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Dupli-Tron 526 | Zero-Knowledge PDF Engine",
         "description": null,
@@ -357,14 +357,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://comscie-it-map.barbph.com/",
-            "durationMs": 630
+            "durationMs": 734
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://comscie-it-map.barbph.com/",
-        "responseTimeMs": 630,
-        "consecutiveSuccessfulRuns": 245,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 734,
+        "consecutiveSuccessfulRuns": 246,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Map of Computer Science &amp; IT",
         "description": null,
@@ -405,14 +405,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://greenforest.barbph.com/",
-            "durationMs": 553
+            "durationMs": 670
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://greenforest.barbph.com/",
-        "responseTimeMs": 553,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 670,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Powered By Barb The Builder - Forest Edition",
         "description": null,
@@ -453,14 +453,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://nightsky.barbph.com/",
-            "durationMs": 613
+            "durationMs": 680
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://nightsky.barbph.com/",
-        "responseTimeMs": 613,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 680,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Powered By Barb The Builder - Cosmic Glass",
         "description": null,
@@ -501,14 +501,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://redroses.barbph.com/",
-            "durationMs": 575
+            "durationMs": 744
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://redroses.barbph.com/",
-        "responseTimeMs": 575,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 744,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Powered By Barb The Builder",
         "description": null,
@@ -549,14 +549,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://joyfulprism.barbph.com/",
-            "durationMs": 614
+            "durationMs": 768
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://joyfulprism.barbph.com/",
-        "responseTimeMs": 614,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 768,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Powered By Barb The Builder",
         "description": null,
@@ -597,14 +597,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://vines.barbph.com/",
-            "durationMs": 601
+            "durationMs": 641
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://vines.barbph.com/",
-        "responseTimeMs": 601,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 641,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Powered By Barb The Builder - Graceful Edition",
         "description": null,
@@ -645,14 +645,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://cloudsandstars.barbph.com/",
-            "durationMs": 628
+            "durationMs": 788
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://cloudsandstars.barbph.com/",
-        "responseTimeMs": 628,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 788,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Powered By Barb The Builder - Perfectly Responsive Cosmic Glass",
         "description": null,
@@ -693,14 +693,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://thelunarosa-sot.barbph.com/",
-            "durationMs": 646
+            "durationMs": 875
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://thelunarosa-sot.barbph.com/",
-        "responseTimeMs": 646,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 875,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Orbital Data Deck | Luna Rosa Stealth",
         "description": null,
@@ -741,14 +741,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://orangeengine.barbph.com/",
-            "durationMs": 676
+            "durationMs": 711
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://orangeengine.barbph.com/",
-        "responseTimeMs": 676,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 711,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "DATA PARSING ENGINE // BARB THE BUILDER",
         "description": null,
@@ -789,14 +789,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://thesecondfloormarketplace.barbph.com/",
-            "durationMs": 612
+            "durationMs": 593
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://thesecondfloormarketplace.barbph.com/",
-        "responseTimeMs": 612,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 593,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Hey Human | The 2nd Floor",
         "description": null,
@@ -837,14 +837,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://theorb.barbph.com/",
-            "durationMs": 627
+            "durationMs": 700
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://theorb.barbph.com/",
-        "responseTimeMs": 627,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 700,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "The Heart — Chaotic Shoreline Edition",
         "description": null,
@@ -885,14 +885,14 @@
             "ok": true,
             "status": 200,
             "finalUrl": "https://nohumanconversation.barbph.com/",
-            "durationMs": 635
+            "durationMs": 721
           }
         ],
         "httpStatus": 200,
         "finalUrl": "https://nohumanconversation.barbph.com/",
-        "responseTimeMs": 635,
-        "consecutiveSuccessfulRuns": 246,
-        "lastConfirmedSuccessAt": "2026-09-14T03:29:03.628Z",
+        "responseTimeMs": 721,
+        "consecutiveSuccessfulRuns": 247,
+        "lastConfirmedSuccessAt": "2026-09-14T04:29:01.817Z",
         "contentType": "text/html; charset=UTF-8",
         "title": "Hey Human",
         "description": null,
