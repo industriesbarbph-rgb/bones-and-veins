@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-10T23:23:26.032Z",
-  "basedOnHealthGeneratedAt": "2026-11-10T23:23:22.126Z",
+  "generatedAt": "2026-11-11T06:23:34.097Z",
+  "basedOnHealthGeneratedAt": "2026-11-11T06:23:27.825Z",
   "policy": {
     "cure": "APPROVAL REQUIRED",
     "publish": "SEPARATE APPROVAL REQUIRED",
@@ -9,11 +9,11 @@
     "automaticProductionDeploys": false
   },
   "summary": {
-    "totalCandidates": 36,
-    "pendingApproval": 36,
-    "contentReviewRequired": 18,
-    "authorityConfirmationRequired": 0,
-    "sourceMappingPending": 33,
+    "totalCandidates": 35,
+    "pendingApproval": 35,
+    "contentReviewRequired": 17,
+    "authorityConfirmationRequired": 1,
+    "sourceMappingPending": 32,
     "staleFindingsSkipped": 0
   },
   "tickets": [
@@ -246,41 +246,24 @@
       "publishRequired": true
     },
     {
-      "ticketId": "map-computer-science-it:META_DESCRIPTION_MISSING",
+      "ticketId": "map-computer-science-it:LIVE_URL_NOT_FOUND",
       "propertyId": "map-computer-science-it",
       "propertyName": "Map of Computer Science & IT",
       "registeredUrl": "https://comscie-it-map.barbph.com/",
-      "findingCode": "META_DESCRIPTION_MISSING",
-      "severity": "warning",
-      "diagnosis": "Meta description is missing.",
-      "evidence": {},
+      "findingCode": "LIVE_URL_NOT_FOUND",
+      "severity": "fault",
+      "diagnosis": "The registered live URL returned HTTP 404.",
+      "evidence": {
+        "status": 404
+      },
       "sourceMapping": "pending",
       "status": "PENDING APPROVAL",
       "cureApproval": false,
       "publishApproval": false,
-      "action": "Draft a concise product-specific meta description from approved page/source context, then present the exact copy for approval.",
+      "action": "Restore the intended live page or approve a registry correction to the current canonical URL.",
       "proposedValue": null,
-      "requiresContentReview": true,
-      "requiresAuthorityConfirmation": false,
-      "publishRequired": true
-    },
-    {
-      "ticketId": "map-computer-science-it:CANONICAL_MISSING",
-      "propertyId": "map-computer-science-it",
-      "propertyName": "Map of Computer Science & IT",
-      "registeredUrl": "https://comscie-it-map.barbph.com/",
-      "findingCode": "CANONICAL_MISSING",
-      "severity": "warning",
-      "diagnosis": "No canonical link was found.",
-      "evidence": {},
-      "sourceMapping": "pending",
-      "status": "PENDING APPROVAL",
-      "cureApproval": false,
-      "publishApproval": false,
-      "action": "Add a self-referencing canonical tag after source mapping is confirmed.",
-      "proposedValue": "https://comscie-it-map.barbph.com/",
       "requiresContentReview": false,
-      "requiresAuthorityConfirmation": false,
+      "requiresAuthorityConfirmation": true,
       "publishRequired": true
     },
     {
