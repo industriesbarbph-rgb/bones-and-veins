@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12T03:00:11.808Z",
-  "basedOnHealthGeneratedAt": "2026-11-12T02:59:56.596Z",
+  "generatedAt": "2026-11-12T11:13:16.857Z",
+  "basedOnHealthGeneratedAt": "2026-11-12T11:13:12.857Z",
   "policy": {
     "cure": "APPROVAL REQUIRED",
     "publish": "SEPARATE APPROVAL REQUIRED",
@@ -9,11 +9,11 @@
     "automaticProductionDeploys": false
   },
   "summary": {
-    "totalCandidates": 35,
-    "pendingApproval": 35,
+    "totalCandidates": 36,
+    "pendingApproval": 36,
     "contentReviewRequired": 17,
-    "authorityConfirmationRequired": 1,
-    "sourceMappingPending": 32,
+    "authorityConfirmationRequired": 2,
+    "sourceMappingPending": 33,
     "staleFindingsSkipped": 0
   },
   "tickets": [
@@ -72,6 +72,27 @@
       "proposedValue": "https://ikl.barbph.com/",
       "requiresContentReview": false,
       "requiresAuthorityConfirmation": false,
+      "publishRequired": true
+    },
+    {
+      "ticketId": "watchtower:LIVE_URL_NOT_FOUND",
+      "propertyId": "watchtower",
+      "propertyName": "The Watch Tower",
+      "registeredUrl": "https://watchtower.barbph.com/",
+      "findingCode": "LIVE_URL_NOT_FOUND",
+      "severity": "fault",
+      "diagnosis": "The registered live URL returned HTTP 404.",
+      "evidence": {
+        "status": 404
+      },
+      "sourceMapping": "pending",
+      "status": "PENDING APPROVAL",
+      "cureApproval": false,
+      "publishApproval": false,
+      "action": "Restore the intended live page or approve a registry correction to the current canonical URL.",
+      "proposedValue": null,
+      "requiresContentReview": false,
+      "requiresAuthorityConfirmation": true,
       "publishRequired": true
     },
     {
